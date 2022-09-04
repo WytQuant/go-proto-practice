@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+package practice;
+
+option go_package = "github.com/WytQuant/go-proto-practice/proto";
+
+message Person {
+  string name = 1;
+  int32 id = 2;  // Unique ID number for this person.
+  string email = 3;
+
+  enum PhoneType {
+    UNDEFINED = 0;
+    MOBILE = 1;
+    HOME = 2;
+    WORK = 3;
+  }
+
+  message PhoneNumber {
+    string number = 1;
+    PhoneType type = 2;
+  }
+
+  repeated PhoneNumber phones = 4;
+}
+
+// Our address book file is just one of these.
+message AddressBook {
+  repeated Person people = 1;
+}
